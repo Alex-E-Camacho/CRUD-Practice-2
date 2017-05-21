@@ -7,7 +7,11 @@ post "/poems" do
   @poem = Poem.new(params[:poem])
 
   if @poem.save
+    if request.xhr?
+      erb :'poems/_poem', layout: false, locals: { poem: @poem }
+    else
       redirect "/poems/#{@poem.id}"
+    end
   else
     @errors = @poem.errors.values.flatten
     erb :"/poems/new"
