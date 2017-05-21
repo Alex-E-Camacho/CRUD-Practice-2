@@ -14,7 +14,12 @@ post "/poems" do
     end
   else
     @errors = @poem.errors.values.flatten
-    erb :"/poems/new"
+    if request.xhr?
+      status 400
+      erb :'/_errors', layout: false, locals: {errors: @errors}
+    else
+      erb :"/poems/new"
+    end
   end
 end
 

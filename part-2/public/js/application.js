@@ -11,7 +11,10 @@ $(document).ready(function() {
       data: $data,
     }).done(function(res) {
       $("#new-poem-form")[0].reset();
+      $(".errors").remove();
       $(".poem-list").prepend("<li class=poem-list-item>" + res + "</li>");
+    }).fail(function(a,b,c) {
+      $("#sidebar").find("p").append(a.responseText)
     })
   });
 
