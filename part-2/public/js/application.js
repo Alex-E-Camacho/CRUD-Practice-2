@@ -15,7 +15,7 @@ $(document).ready(function() {
     })
   });
 
-  $(".form").on("submit", function() {
+  $("#poems").on("submit", ".form", function() {
     event.preventDefault();
     var $url = $(this).attr("action");
     var $poemApplause = $(this);
@@ -27,7 +27,6 @@ $(document).ready(function() {
       method: "put",
       // data: $data,
     }).done(function(res) {
-      console.log(res);
       $($poemApplause).closest("article").find("#applause-count").html(res);
     })
   })
