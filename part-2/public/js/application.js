@@ -22,13 +22,10 @@ $(document).ready(function() {
     event.preventDefault();
     var $url = $(this).attr("action");
     var $poemApplause = $(this);
-    // var $method = $(this).attr("method");
-    // var $data = $(this).serialize();
 
     $.ajax({
       url: $url,
       method: "put",
-      // data: $data,
     }).done(function(res) {
       $($poemApplause).closest("article").find("#applause-count").html(res);
     })
