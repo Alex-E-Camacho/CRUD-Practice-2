@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -15,9 +15,22 @@
   <script src="/js/jquery.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Potluck Party</title>
 </head>
 <body>
+  <h1 style="text-align:left">Potluck Party</h1>
+  <% if logged_in? %>
+    <div style="text-align:right">
+      <a href="/users/<%=@user.id%>"><%=@user.username%></a> |
+      <a href="/logout">Logout</a>
+  </div>
+    <% else %>
+    <div style="text-align:right">
+      <a href="/login">Login</a> |
+      <a href="/users/new">Register</a>
+    </div>
+  <% end %>
+
   <%= yield %>
 </body>
 </html>
