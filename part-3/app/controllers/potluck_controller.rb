@@ -1,10 +1,9 @@
 get '/potlucks' do
-  @potlucks = Potluck.order(:starts_at)
+  @potlucks = Potluck.where("starts_at > ?", [DateTime.now])
   erb :'/potlucks/index'
 end
 
 get '/potlucks/new' do
-  "this is the create potlucks route"
   require_user
   erb :'/potlucks/new'
 end
