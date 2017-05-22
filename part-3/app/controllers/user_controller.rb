@@ -17,9 +17,14 @@ post '/users' do
   end
 end
 
+
 get '/users/:id' do
   @user = User.find_by(id: params[:id])
   erb :'/users/show'
+end
+
+get '/users/:id/potlucks' do
+  "this is the users potlucks page"
 end
 
 get '/users/:id/edit' do

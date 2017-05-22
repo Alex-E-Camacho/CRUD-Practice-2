@@ -7,7 +7,7 @@ def logged_in?
 end
 
 def require_user
-  if !current_user
+  if !logged_in?
     redirect '/login'
   end
 end

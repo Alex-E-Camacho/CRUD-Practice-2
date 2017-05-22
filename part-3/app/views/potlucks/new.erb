@@ -1,0 +1,20 @@
+<div>
+  <ul>
+    <% if @errors %>
+      <% @errors.each do |error| %>
+        <li><%=error%></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<form action="/potlucks" method="post">
+  <label for="potluck[name]">Name:</label><br>
+    <input type="text" name="potluck[name]"><br><br>
+  <label for="potluck[location]">Location:</label><br>
+    <input type="text" name="potluck[location]"><br><br>
+  <label for="potluck[starts_at]">Starts At (YYYY-MM-DD HH:MM):</label><br>
+    <input type="text" name="potluck[starts_at]"><br>
+    <input type="hidden" name="potluck[user_id]" value="<%=current_user.id%>">
+  <input type="submit" value="Create Potluck">
+</form>

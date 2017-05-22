@@ -1,0 +1,8 @@
+<ul>
+  <% if @potlucks %>
+    <% @potlucks.each do |potluck| %>
+      <h3><a href="/potlucks/<%=potluck.id%>"><%=potluck.name%></a></h3>
+      <p>Location: <%=potluck.location%> | Starts at: <%=potluck.starts_at%></p>
+    <% end %>
+  <% end %>
+</ul>

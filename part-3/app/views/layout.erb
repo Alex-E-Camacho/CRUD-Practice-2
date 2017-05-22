@@ -21,8 +21,9 @@
   <h1 style="text-align:left">Potluck Party</h1>
   <% if logged_in? %>
     <div style="text-align:right">
-      <a href="/users/<%=@user.id%>"><%=@user.username%></a> |
-      <a href="/logout">Logout</a>
+      <a href="/users/<%=current_user.id%>"><%=current_user.username%></a> |
+      <a href="/potlucks/new">host a potluck</a> |
+      <a href="/logout">logout</a>
   </div>
     <% else %>
     <div style="text-align:right">

@@ -1,5 +1,5 @@
 get '/' do
-  erb :index
+  redirect '/potlucks'
 end
 
 get '/login' do
