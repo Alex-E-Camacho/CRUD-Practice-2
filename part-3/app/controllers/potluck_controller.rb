@@ -23,3 +23,33 @@ get '/potlucks/:potluck_id' do
   @potluck = Potluck.find_by(id: params[:potluck_id])
   erb :'/potlucks/show'
 end
+
+get '/potlucks/:potluck_id/edit' do
+  require_user
+  @potluck = Potluck.find_by(id: params[:potluck_id])
+  if @potluck.host == current_user
+    erb :'/potlucks/edit'
+  else
+    redirect '/login'
+  end
+end
+
+put '/potlucks/:potluck_id' do
+  @potluck = Potluck.find_by(id: params[:potluck_id])
+  if @potluck.update(params["potluck"])
+    redirect "/potlucks/#{@potluck.id}"
+  else
+    @errors = @potluck.errors.full_messages
+    erb :'/potlucks/edit'
+  end
+end
+
+delete '/potlucks/:potluck_id' do
+  @potluck = Potluck.find_by(id: params[:potluck_id])
+  if current_user == @potluck.host
+    @potluck.destroy
+    redirect '/potlucks'
+  else
+    redirect '/potlucks'
+  end
+end

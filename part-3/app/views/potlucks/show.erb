@@ -2,3 +2,12 @@
 <h3>Location:<%=@potluck.location%></h3>
 <h3>Time:<%=@potluck.starts_at%></h3>
 <h3>Host: <%=@potluck.host.username%></h3>
+
+<% if current_user == @potluck.host %>
+    <a href="/potlucks/<%=@potluck.id%>/edit">Edit Potluck</a><br>
+    <form action="/potlucks/<%=@potluck.id%>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Potluck">
+    </form>
+<% end %>
+<a href="/potlucks">Homepage</a>
