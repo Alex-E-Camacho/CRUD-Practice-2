@@ -11,3 +11,8 @@
     </form>
 <% end %>
 <a href="/potlucks">Homepage</a>
+
+<h3>Attendees</h3>
+<% @potluck.attendees.each do |user| %>
+  <p><%=user.username%> is bringing <%=%>.</p>
+<% end %>
